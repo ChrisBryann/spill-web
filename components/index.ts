@@ -21,3 +21,6 @@ export {
   DropdownMenuRadioGroup,
 } from "./ui/dropdown-menu";
 export { ModeToggle } from "./ui/mode-toggle";
+
+// Self-made UI Components
+export { Header } from "./Header";
