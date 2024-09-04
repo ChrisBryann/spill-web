@@ -21,6 +21,17 @@ export {
   DropdownMenuRadioGroup,
 } from "./ui/dropdown-menu";
 export { ModeToggle } from "./ui/mode-toggle";
+export {
+  Table,
+  TableHeader,
+  TableBody,
+  TableFooter,
+  TableHead,
+  TableRow,
+  TableCell,
+  TableCaption,
+} from "./ui/table";
+export { AvatarCircles } from "./ui/avatar-circles";
 
 // Self-made UI Components
 export { Header } from "./Header";
