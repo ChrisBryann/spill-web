@@ -32,6 +32,25 @@ export {
   TableCaption,
 } from "./ui/table";
 export { AvatarCircles } from "./ui/avatar-circles";
+export {
+  Card,
+  CardHeader,
+  CardFooter,
+  CardTitle,
+  CardDescription,
+  CardContent,
+} from "./ui/card";
+export { Separator } from "./ui/separator";
+export {
+  Pagination,
+  PaginationContent,
+  PaginationEllipsis,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
+} from "./ui/pagination";
 
 // Self-made UI Components
 export { Header } from "./Header";
+export { OrderSummary } from "./OrderSummary";

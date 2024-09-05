@@ -2,10 +2,7 @@ import {
   AvatarCircles,
   BlurFade,
   Button,
-  Step,
-  StepFooter,
-  StepItem,
-  Stepper,
+  OrderSummary,
   Table,
   TableBody,
   TableCaption,
@@ -77,7 +74,7 @@ export default function Home() {
     <>
       <DotPattern
         className={ny(
-          "[mask-image:radial-gradient(ellipse_at_center,white,transparent)]",
+          "[mask-image:radial-gradient(ellipse_at_center,white,transparent)]"
         )}
       />
       <main className="min-h-screen mx-auto flex-1 overflow-hidden">
@@ -132,8 +129,9 @@ export default function Home() {
                     </TableCell>
                     <TableCell className="text-left">{order.name}</TableCell>
                     <TableCell className="text-left space-x-2 flex flex-row">
-                      {order.groups.map((group) => (
+                      {order.groups.map((group, idx) => (
                         <AvatarCircles
+                          key={idx}
                           avatarUrls={group}
                           numPeople={group.length}
                         />
@@ -156,6 +154,7 @@ export default function Home() {
               </TableFooter>
             </Table>
           </BlurFade>
+          <OrderSummary />
         </section>
       </main>
     </>
