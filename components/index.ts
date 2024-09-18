@@ -50,6 +50,21 @@ export {
   PaginationNext,
   PaginationPrevious,
 } from "./ui/pagination";
+export {
+  Sheet,
+  SheetPortal,
+  SheetOverlay,
+  SheetTrigger,
+  SheetClose,
+  SheetContent,
+  SheetHeader,
+  SheetFooter,
+  SheetTitle,
+  SheetDescription,
+} from "./ui/sheet";
+export { Input } from "./ui/input";
+export { Badge, badgeVariants } from "./ui/badge";
+export { Avatar, AvatarImage, AvatarFallback } from "./ui/avatar";
 
 // Self-made UI Components
 export { Header } from "./Header";
