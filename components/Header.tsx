@@ -36,25 +36,13 @@ const Header = () => {
           href="#"
           className="text-muted-foreground hover:text-foreground transition-colors"
         >
-          Orders
+          Expenses
         </Link>
         <Link
           href="#"
           className="text-muted-foreground hover:text-foreground transition-colors"
         >
-          Products
-        </Link>
-        <Link
-          href="#"
-          className="text-muted-foreground hover:text-foreground transition-colors"
-        >
-          Customers
-        </Link>
-        <Link
-          href="#"
-          className="text-muted-foreground hover:text-foreground transition-colors"
-        >
-          Analytics
+          Friends
         </Link>
       </nav>
       <Sheet>
@@ -79,31 +67,19 @@ const Header = () => {
               href="#"
               className="text-muted-foreground hover:text-foreground"
             >
-              Orders
+              Expenses
             </Link>
             <Link
               href="#"
               className="text-muted-foreground hover:text-foreground"
             >
-              Products
-            </Link>
-            <Link
-              href="#"
-              className="text-muted-foreground hover:text-foreground"
-            >
-              Customers
-            </Link>
-            <Link
-              href="#"
-              className="text-muted-foreground hover:text-foreground"
-            >
-              Analytics
+              Friends
             </Link>
           </nav>
         </SheetContent>
       </Sheet>
-      <div className="flex w-full items-center gap-4 md:ml-auto md:gap-2 lg:gap-4">
-        <form className="ml-auto flex-1 sm:flex-initial">
+      <div className="flex w-full justify-end items-center gap-4 md:ml-auto md:gap-2 lg:gap-4">
+        {/* <form className="ml-auto flex-1 sm:flex-initial">
           <div className="relative">
             <Search className="text-muted-foreground absolute left-2.5 top-2.5 size-4" />
             <Input
@@ -112,7 +88,8 @@ const Header = () => {
               className="pl-8 sm:w-[300px] md:w-[200px] lg:w-[300px]"
             />
           </div>
-        </form>
+        </form> */}
+        <ModeToggle />
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button variant="secondary" size="icon" className="rounded-full">
