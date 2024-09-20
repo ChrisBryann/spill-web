@@ -28,7 +28,7 @@ import {
 
 export default function Dashboard() {
   return (
-    <div className="flex min-h-screen w-full flex-col">
+    <div className="flex min-h-screen max-w-7xl w-full mx-auto flex-col">
       <main className="flex flex-1 flex-col gap-4 p-4 md:gap-8 md:p-8">
         <div className="grid gap-4 md:grid-cols-2 md:gap-8 lg:grid-cols-4">
           <Card x-chunk="dashboard-01-chunk-0">
@@ -101,14 +101,14 @@ export default function Dashboard() {
               </Button>
             </CardHeader>
             <CardContent>
-              <Table>
-                <TableHeader>
+              <Table containerClassname="h-fit max-h-80 overflow-y-auto relative">
+                <TableHeader className="sticky">
                   <TableRow>
                     <TableHead>Expense</TableHead>
                     <TableHead className="text-right">Amount</TableHead>
                   </TableRow>
                 </TableHeader>
-                <TableBody>
+                <TableBody className="overflow-y-auto">
                   <TableRow>
                     <TableCell>
                       <div className="font-medium">BCD Tofu House</div>

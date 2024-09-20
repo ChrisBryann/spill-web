@@ -5,8 +5,8 @@ import { ny } from '@/lib/utils'
 const Table = React.forwardRef<
    HTMLTableElement,
    React.HTMLAttributes<HTMLTableElement>
->(({ className, ...props }, ref) => (
-   <div className="relative w-full overflow-auto">
+>(({ className, containerClassname, ...props }, ref) => (
+   <div className={ny("relative w-full overflow-auto", containerClassname)}>
       <table
          ref={ref}
          className={ny('w-full caption-bottom text-sm', className)}
