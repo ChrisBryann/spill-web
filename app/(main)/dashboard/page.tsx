@@ -8,7 +8,6 @@ import {
 } from "lucide-react";
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components";
-import { Badge } from "@/components";
 import { Button } from "@/components";
 import {
   Card,
@@ -85,13 +84,14 @@ export default function Dashboard() {
           </Card>
         </div>
         <div className="grid gap-4 md:gap-8 lg:grid-cols-2 xl:grid-cols-3">
-          <Card className="xl:col-span-2 max-h-2xl" x-chunk="dashboard-01-chunk-4">
+          <Card
+            className="xl:col-span-2 max-h-2xl"
+            x-chunk="dashboard-01-chunk-4"
+          >
             <CardHeader className="flex flex-row items-center">
               <div className="grid gap-2">
                 <CardTitle>Expenses</CardTitle>
-                <CardDescription>
-                  Your recent expenses.
-                </CardDescription>
+                <CardDescription>Your recent expenses.</CardDescription>
               </div>
               <Button asChild size="sm" className="ml-auto gap-1">
                 <Link href="#">
@@ -101,8 +101,8 @@ export default function Dashboard() {
               </Button>
             </CardHeader>
             <CardContent>
-              <Table containerClassname="h-fit max-h-80 overflow-y-auto relative">
-                <TableHeader className="sticky">
+              <Table containerClassname="max-h-80">
+                <TableHeader className="bg-card">
                   <TableRow>
                     <TableHead>Expense</TableHead>
                     <TableHead className="text-right">Amount</TableHead>
@@ -135,6 +135,33 @@ export default function Dashboard() {
                       </div>
                     </TableCell>
                     <TableCell className="text-right">$137.43</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell>
+                      <div className="font-medium">Manaoo Thai</div>
+                      <div className="text-muted-foreground hidden text-sm md:inline">
+                        09/12/2024
+                      </div>
+                    </TableCell>
+                    <TableCell className="text-right">$212.32</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell>
+                      <div className="font-medium">Manaoo Thai</div>
+                      <div className="text-muted-foreground hidden text-sm md:inline">
+                        09/12/2024
+                      </div>
+                    </TableCell>
+                    <TableCell className="text-right">$212.32</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell>
+                      <div className="font-medium">Manaoo Thai</div>
+                      <div className="text-muted-foreground hidden text-sm md:inline">
+                        09/12/2024
+                      </div>
+                    </TableCell>
+                    <TableCell className="text-right">$212.32</TableCell>
                   </TableRow>
                   <TableRow>
                     <TableCell>
