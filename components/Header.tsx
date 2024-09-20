@@ -14,36 +14,49 @@ import { Input } from "@/components";
 import { Sheet, SheetContent, SheetTrigger } from "@/components";
 import { Button, ModeToggle } from "@/components";
 
+type RouteType = {
+  href: string;
+  name: string;
+};
+
+const routes: RouteType[] = [
+  {
+    href: "/dashboard",
+    name: "Dashboard",
+  },
+  {
+    href: "/expenses",
+    name: "Expenses",
+  },
+  {
+    href: "/friends",
+    name: "Friends",
+  },
+];
+
 const Header = () => {
   const pathname: string = usePathname();
 
-  return pathname.includes("dashboard") ? (
+  return !!pathname ? (
     <header className="bg-background sticky top-0 flex h-16 items-center gap-4 border-b px-4 md:px-6">
       <nav className="hidden flex-col gap-6 text-lg font-medium md:flex md:flex-row md:items-center md:gap-5 md:text-sm lg:gap-6">
         <Link
-          href="#"
+          href="/"
           className="flex items-center gap-2 text-lg font-semibold md:text-base"
         >
           Spill
         </Link>
-        <Link
-          href="#"
-          className="text-foreground hover:text-foreground transition-colors"
-        >
-          Dashboard
-        </Link>
-        <Link
-          href="#"
-          className="text-muted-foreground hover:text-foreground transition-colors"
-        >
-          Expenses
-        </Link>
-        <Link
-          href="#"
-          className="text-muted-foreground hover:text-foreground transition-colors"
-        >
-          Friends
-        </Link>
+        {routes.map((route) => (
+          <Link
+            key={route.href}
+            href={route.href}
+            className={`text${
+              pathname !== route.href && "-muted"
+            }-foreground hover:text-foreground transition-colors`}
+          >
+            {route.name}
+          </Link>
+        ))}
       </nav>
       <Sheet>
         <SheetTrigger asChild>
@@ -55,26 +68,22 @@ const Header = () => {
         <SheetContent side="left">
           <nav className="grid gap-6 text-lg font-medium">
             <Link
-              href="#"
+              href="/"
               className="flex items-center gap-2 text-lg font-semibold"
             >
               Spill
             </Link>
-            <Link href="#" className="hover:text-foreground">
-              Dashboard
-            </Link>
-            <Link
-              href="#"
-              className="text-muted-foreground hover:text-foreground"
-            >
-              Expenses
-            </Link>
-            <Link
-              href="#"
-              className="text-muted-foreground hover:text-foreground"
-            >
-              Friends
-            </Link>
+            {routes.map((route) => (
+              <Link
+                key={route.href}
+                href={route.href}
+                className={`text${
+                  pathname !== route.href && "-muted"
+                }-foreground hover:text-foreground`}
+              >
+                {route.name}
+              </Link>
+            ))}
           </nav>
         </SheetContent>
       </Sheet>
