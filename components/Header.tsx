@@ -10,7 +10,6 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components";
-import { Input } from "@/components";
 import { Sheet, SheetContent, SheetTrigger } from "@/components";
 import { Button, ModeToggle } from "@/components";
 
@@ -37,39 +36,14 @@ const routes: RouteType[] = [
 const Header = () => {
   const pathname: string = usePathname();
 
-  return !!pathname ? (
-    <header className="bg-background sticky top-0 flex h-16 items-center gap-4 border-b px-4 md:px-6">
-      <nav className="hidden flex-col gap-6 text-lg font-medium md:flex md:flex-row md:items-center md:gap-5 md:text-sm lg:gap-6">
-        <Link
-          href="/"
-          className="flex items-center gap-2 text-lg font-semibold md:text-base"
-        >
-          Spill
-        </Link>
-        {routes.map((route) => (
-          <Link
-            key={route.href}
-            href={route.href}
-            className={`text${
-              pathname !== route.href && "-muted"
-            }-foreground hover:text-foreground transition-colors`}
-          >
-            {route.name}
-          </Link>
-        ))}
-      </nav>
-      <Sheet>
-        <SheetTrigger asChild>
-          <Button variant="outline" size="icon" className="shrink-0 md:hidden">
-            <Menu className="size-5" />
-            <span className="sr-only">Toggle navigation menu</span>
-          </Button>
-        </SheetTrigger>
-        <SheetContent side="left">
-          <nav className="grid gap-6 text-lg font-medium">
+  return (
+    <header className="w-full sticky left-0 top-0 z-50 flex h-16 items-center gap-4 border-b backdrop-blur-md px-4 md:px-6">
+      {!pathname ? (
+        <>
+          <nav className="hidden flex-col gap-6 text-lg font-medium md:flex md:flex-row md:items-center md:gap-5 md:text-sm lg:gap-6">
             <Link
               href="/"
-              className="flex items-center gap-2 text-lg font-semibold"
+              className="flex items-center gap-2 text-lg font-semibold md:text-base"
             >
               Spill
             </Link>
@@ -79,16 +53,47 @@ const Header = () => {
                 href={route.href}
                 className={`text${
                   pathname !== route.href && "-muted"
-                }-foreground hover:text-foreground`}
+                }-foreground hover:text-foreground transition-colors`}
               >
                 {route.name}
               </Link>
             ))}
           </nav>
-        </SheetContent>
-      </Sheet>
-      <div className="flex w-full justify-end items-center gap-4 md:ml-auto md:gap-2 lg:gap-4">
-        {/* <form className="ml-auto flex-1 sm:flex-initial">
+          <Sheet>
+            <SheetTrigger asChild>
+              <Button
+                variant="outline"
+                size="icon"
+                className="shrink-0 md:hidden"
+              >
+                <Menu className="size-5" />
+                <span className="sr-only">Toggle navigation menu</span>
+              </Button>
+            </SheetTrigger>
+            <SheetContent side="left">
+              <nav className="grid gap-6 text-lg font-medium">
+                <Link
+                  href="/"
+                  className="flex items-center gap-2 text-lg font-semibold"
+                >
+                  Spill
+                </Link>
+                {routes.map((route) => (
+                  <Link
+                    key={route.href}
+                    href={route.href}
+                    className={`text${
+                      pathname !== route.href && "-muted"
+                    }-foreground hover:text-foreground`}
+                  >
+                    {route.name}
+                  </Link>
+                ))}
+              </nav>
+            </SheetContent>
+          </Sheet>
+          <div className="flex w-full justify-end items-center gap-4 md:ml-auto md:gap-2 lg:gap-4">
+            {/* <form className="ml-auto flex-1 sm:flex-initial">
           <div className="relative">
             <Search className="text-muted-foreground absolute left-2.5 top-2.5 size-4" />
             <Input
@@ -98,37 +103,41 @@ const Header = () => {
             />
           </div>
         </form> */}
-        <ModeToggle />
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button variant="secondary" size="icon" className="rounded-full">
-              <CircleUser className="size-5" />
-              <span className="sr-only">Toggle user menu</span>
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align="end">
-            <DropdownMenuLabel>My Account</DropdownMenuLabel>
-            <DropdownMenuSeparator />
-            <DropdownMenuItem>Settings</DropdownMenuItem>
-            <DropdownMenuItem>Support</DropdownMenuItem>
-            <DropdownMenuSeparator />
-            <DropdownMenuItem>Logout</DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
-      </div>
-    </header>
-  ) : (
-    <header className="animate-fade-in fixed left-0 top-0 z-50 w-full border-b backdrop-blur-md [--animation-delay:600ms]">
-      <div className="container flex h-14 items-center justify-between space-x-4">
-        <Link className="text-lg font-semibold flex items-center" href="/">
-          Spill
-        </Link>
-        <div className="flex h-full items-center space-x-3">
-          <ModeToggle />
-          <Button variant={"ghost"}>Log in</Button>
-          <Button variant={"secondary"}>Sign up</Button>
-        </div>
-      </div>
+            <ModeToggle />
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button
+                  variant="secondary"
+                  size="icon"
+                  className="rounded-full"
+                >
+                  <CircleUser className="size-5" />
+                  <span className="sr-only">Toggle user menu</span>
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end">
+                <DropdownMenuLabel>My Account</DropdownMenuLabel>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem>Settings</DropdownMenuItem>
+                <DropdownMenuItem>Support</DropdownMenuItem>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem>Logout</DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+          </div>
+        </>
+      ) : (
+        <nav className="w-full flex items-center justify-between gap-6 md:gap-5 lg:gap-6">
+          <Link className="text-lg font-semibold flex items-center" href="/">
+            Spill
+          </Link>
+          <div className="flex h-full items-center space-x-3">
+            <ModeToggle />
+            <Button variant={"ghost"}>Log in</Button>
+            <Button variant={"secondary"}>Sign up</Button>
+          </div>
+        </nav>
+      )}
     </header>
   );
 };

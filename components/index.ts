@@ -66,6 +66,7 @@ export { Input } from "./ui/input";
 export { Badge, badgeVariants } from "./ui/badge";
 export { Avatar, AvatarImage, AvatarFallback } from "./ui/avatar";
 export { ScrollArea, ScrollBar } from "./ui/scroll-area";
+export { Tabs, TabsList, TabsTrigger, TabsContent } from "./ui/tabs";
 
 // Self-made UI Components
 export { Header } from "./Header";
