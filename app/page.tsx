@@ -71,13 +71,15 @@ const orders = [
 
 export default function Home() {
   return (
-    <>
+    <div>
+      <div class="fixed left-0 top-0 -z-10 h-full w-full">
       <DotPattern
-        className={ny(
-          "[mask-image:radial-gradient(ellipse_at_center,white,transparent)]"
-        )}
-      />
-      <main className="min-h-screen mx-auto flex-1 overflow-hidden">
+          className={ny(
+            "[mask-image:radial-gradient(ellipse_at_center,white,transparent)]",
+          )}
+        />
+      </div>
+      <main className="flex-1 mx-auto overflow-hidden">
         <section
           id="hero"
           className="relative mx-auto mt-32 max-w-5xl p-6 rounded-md text-center md:px-8 space-y-6"
@@ -157,6 +159,6 @@ export default function Home() {
           <OrderSummary />
         </section>
       </main>
-    </>
+    </div>
   );
 }

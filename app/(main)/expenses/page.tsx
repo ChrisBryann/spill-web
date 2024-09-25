@@ -66,6 +66,7 @@ export default function Expenses() {
             </Button> */}
             <Button size="sm" className="h-8 gap-1">
               <PlusCircle className="size-3.5" />
+              {/* add a dialog component to ask user for name of expense when add expense button is clicked */}
               <span className="sr-only sm:not-sr-only sm:whitespace-nowrap">
                 Add Expense
               </span>

@@ -25,6 +25,7 @@ import {
   CardTitle,
   Input,
   Label,
+  OrderSummary,
   Table,
   TableBody,
   TableCell,
@@ -37,55 +38,52 @@ export default function CreateExpense() {
   return (
     <main className="grid flex-1 items-start gap-4 p-4 sm:px-6 sm:py-0 md:gap-8">
       <div className="flex items-center gap-4">
-        <Button variant="outline" size="icon" className="size-7">
-          <ChevronLeft className="size-4" />
-          <span className="sr-only">Back</span>
-        </Button>
-        <h1 className="flex-1 shrink-0 whitespace-nowrap text-xl font-semibold tracking-tight sm:grow-0">
-          Pro Controller
+      <h1 className="flex-1 shrink-0 whitespace-nowrap text-2xl font-semibold tracking-tight sm:grow-0">
+          BCD Tofu House
         </h1>
-        <Badge variant="outline" className="ml-auto sm:ml-0">
-          In stock
-        </Badge>
-        <div className="hidden items-center gap-2 md:ml-auto md:flex">
+        <div className="items-center gap-2 ml-auto flex">
           <Button variant="outline" size="sm">
             Discard
           </Button>
-          <Button size="sm">Save Product</Button>
+          <Button size="sm">Create Expense</Button>
         </div>
       </div>
       <div className="grid gap-4 md:grid-cols-[1fr_250px] lg:grid-cols-3 lg:gap-8">
         <div className="grid auto-rows-max items-start gap-4 lg:col-span-2 lg:gap-8">
           <Card x-chunk="dashboard-07-chunk-0">
             <CardHeader>
-              <CardTitle>Product Details</CardTitle>
-              <CardDescription>
-                Lipsum dolor sit amet, consectetur adipiscing elit
-              </CardDescription>
+              <CardTitle>Expense Details</CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="grid gap-6">
+              <div className="grid grid-cols-2 gap-6 items-start">
                 <div className="grid gap-3">
                   <Label htmlFor="name">Name</Label>
                   <Input
                     id="name"
                     type="text"
                     className="w-full"
-                    defaultValue="Gamer Gear Pro Controller"
+                  />
+                  <Label htmlFor="date">Date</Label>
+                  <Input
+                    id="date"
+                    type="date"
+                    className="w-full"
                   />
                 </div>
                 <div className="grid gap-3">
-                  <Label htmlFor="description">Description</Label>
-                  {/* <Textarea
-                      id="description"
-                      defaultValue="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor, nisl nec ultricies ultricies, nunc nisl ultricies nunc, nec ultricies nunc nisl nec nunc."
-                      className="min-h-32"
-                    /> */}
+                  <Label htmlFor="tip_amount">Tip Amount ($)</Label>
                   <Input
-                    id="description"
-                    type="text"
+                    id="tip_amount"
+                    type="number"
                     className="w-full"
-                    defaultValue="Built-in bluetooth and speakers"
+                    step="0.01"
+                  />
+                  <Label htmlFor="tax_amount">Tax Amount (%)</Label>
+                  <Input
+                    id="tax_amount"
+                    type="number"
+                    className="w-full"
+                    step="0.01"
                   />
                 </div>
               </div>
@@ -93,10 +91,7 @@ export default function CreateExpense() {
           </Card>
           <Card x-chunk="dashboard-07-chunk-1">
             <CardHeader>
-              <CardTitle>Stock</CardTitle>
-              <CardDescription>
-                Lipsum dolor sit amet, consectetur adipiscing elit
-              </CardDescription>
+              <CardTitle>Expense Items</CardTitle>
             </CardHeader>
             <CardContent>
               <Table>
@@ -105,7 +100,6 @@ export default function CreateExpense() {
                     <TableHead className="w-[100px]">SKU</TableHead>
                     <TableHead>Stock</TableHead>
                     <TableHead>Price</TableHead>
-                    <TableHead className="w-[100px]">Size</TableHead>
                   </TableRow>
                 </TableHeader>
                 <TableBody>
@@ -123,17 +117,6 @@ export default function CreateExpense() {
                       </Label>
                       <Input id="price-1" type="number" defaultValue="99.99" />
                     </TableCell>
-                    <TableCell>
-                      {/* <ToggleGroup
-                          type="single"
-                          defaultValue="s"
-                          variant="outline"
-                        >
-                          <ToggleGroupItem value="s">S</ToggleGroupItem>
-                          <ToggleGroupItem value="m">M</ToggleGroupItem>
-                          <ToggleGroupItem value="l">L</ToggleGroupItem>
-                        </ToggleGroup> */}
-                    </TableCell>
                   </TableRow>
                   <TableRow>
                     <TableCell className="font-semibold">GGPC-002</TableCell>
@@ -148,17 +131,6 @@ export default function CreateExpense() {
                         Price
                       </Label>
                       <Input id="price-2" type="number" defaultValue="99.99" />
-                    </TableCell>
-                    <TableCell>
-                      {/* <ToggleGroup
-                          type="single"
-                          defaultValue="m"
-                          variant="outline"
-                        >
-                          <ToggleGroupItem value="s">S</ToggleGroupItem>
-                          <ToggleGroupItem value="m">M</ToggleGroupItem>
-                          <ToggleGroupItem value="l">L</ToggleGroupItem>
-                        </ToggleGroup> */}
                     </TableCell>
                   </TableRow>
                   <TableRow>
@@ -175,25 +147,14 @@ export default function CreateExpense() {
                       </Label>
                       <Input id="price-3" type="number" defaultValue="99.99" />
                     </TableCell>
-                    <TableCell>
-                      {/* <ToggleGroup
-                          type="single"
-                          defaultValue="s"
-                          variant="outline"
-                        >
-                          <ToggleGroupItem value="s">S</ToggleGroupItem>
-                          <ToggleGroupItem value="m">M</ToggleGroupItem>
-                          <ToggleGroupItem value="l">L</ToggleGroupItem>
-                        </ToggleGroup> */}
-                    </TableCell>
                   </TableRow>
                 </TableBody>
               </Table>
             </CardContent>
             <CardFooter className="justify-center border-t p-4">
-              <Button size="sm" variant="ghost" className="gap-1">
+              <Button size="sm" variant="default" className="gap-1">
                 <PlusCircle className="size-3.5" />
-                Add Variant
+                Add Item
               </Button>
             </CardFooter>
           </Card>
@@ -236,90 +197,7 @@ export default function CreateExpense() {
             </CardContent>
           </Card>
         </div>
-        <div className="grid auto-rows-max items-start gap-4 lg:gap-8">
-          <Card x-chunk="dashboard-07-chunk-3">
-            <CardHeader>
-              <CardTitle>Product Status</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="grid gap-6">
-                <div className="grid gap-3">
-                  <Label htmlFor="status">Status</Label>
-                  {/* <Select>
-                      <SelectTrigger id="status" aria-label="Select status">
-                        <SelectValue placeholder="Select status" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="draft">Draft</SelectItem>
-                        <SelectItem value="published">Active</SelectItem>
-                        <SelectItem value="archived">Archived</SelectItem>
-                      </SelectContent>
-                    </Select> */}
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-          <Card className="overflow-hidden" x-chunk="dashboard-07-chunk-4">
-            <CardHeader>
-              <CardTitle>Product Images</CardTitle>
-              <CardDescription>
-                Lipsum dolor sit amet, consectetur adipiscing elit
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <div className="grid gap-2">
-                <Image
-                  alt="Product image"
-                  className="aspect-square w-full rounded-md object-cover"
-                  height="300"
-                  src="/placeholder.svg"
-                  width="300"
-                />
-                <div className="grid grid-cols-3 gap-2">
-                  <button type="button">
-                    <Image
-                      alt="Product image"
-                      className="aspect-square w-full rounded-md object-cover"
-                      height="84"
-                      src="/placeholder.svg"
-                      width="84"
-                    />
-                  </button>
-                  <button type="button">
-                    <Image
-                      alt="Product image"
-                      className="aspect-square w-full rounded-md object-cover"
-                      height="84"
-                      src="/placeholder.svg"
-                      width="84"
-                    />
-                  </button>
-                  <button
-                    type="button"
-                    className="flex aspect-square w-full items-center justify-center rounded-md border border-dashed"
-                  >
-                    <Upload className="text-muted-foreground size-4" />
-                    <span className="sr-only">Upload</span>
-                  </button>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-          <Card x-chunk="dashboard-07-chunk-5">
-            <CardHeader>
-              <CardTitle>Archive Product</CardTitle>
-              <CardDescription>
-                Lipsum dolor sit amet, consectetur adipiscing elit.
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <div></div>
-              <Button size="sm" variant="secondary">
-                Archive Product
-              </Button>
-            </CardContent>
-          </Card>
-        </div>
+        <OrderSummary />
       </div>
       <div className="flex items-center justify-center gap-2 md:hidden">
         <Button variant="outline" size="sm">
