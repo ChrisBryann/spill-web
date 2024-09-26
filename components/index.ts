@@ -68,6 +68,49 @@ export { Avatar, AvatarImage, AvatarFallback } from "./ui/avatar";
 export { ScrollArea, ScrollBar } from "./ui/scroll-area";
 export { Tabs, TabsList, TabsTrigger, TabsContent } from "./ui/tabs";
 export { Label } from "./ui/label";
+export {
+  MultiSelect,
+  MultiSelectTrigger,
+  MultiSelectValue,
+  MultiSelectSearch,
+  MultiSelectContent,
+  MultiSelectList,
+  MultiSelectItem,
+  MultiSelectGroup,
+  MultiSelectSeparator,
+  MultiSelectEmpty,
+  renderMultiSelectOptions,
+} from "./ui/multi-select";
+export {
+  Command,
+  CommandDialog,
+  CommandInput,
+  CommandList,
+  CommandEmpty,
+  CommandGroup,
+  CommandItem,
+  CommandShortcut,
+  CommandSeparator,
+} from "./ui/command";
+export {
+  Dialog,
+  DialogPortal,
+  DialogOverlay,
+  DialogClose,
+  DialogTrigger,
+  DialogContent,
+  DialogHeader,
+  DialogFooter,
+  DialogTitle,
+  DialogDescription,
+} from "./ui/dialog";
+export {
+  Tooltip,
+  TooltipTrigger,
+  TooltipArrow,
+  TooltipContent,
+  TooltipProvider,
+} from "./ui/tooltip";
 
 // Self-made UI Components
 export { Header } from "./Header";

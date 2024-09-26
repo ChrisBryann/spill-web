@@ -25,6 +25,15 @@ import {
   CardTitle,
   Input,
   Label,
+  MultiSelect,
+  MultiSelectContent,
+  MultiSelectEmpty,
+  MultiSelectGroup,
+  MultiSelectItem,
+  MultiSelectList,
+  MultiSelectSearch,
+  MultiSelectTrigger,
+  MultiSelectValue,
   OrderSummary,
   Table,
   TableBody,
@@ -38,14 +47,14 @@ export default function CreateExpense() {
   return (
     <main className="grid flex-1 items-start gap-4 p-4 sm:px-6 sm:py-0 md:gap-8">
       <div className="flex items-center gap-4">
-      <h1 className="flex-1 shrink-0 whitespace-nowrap text-2xl font-semibold tracking-tight sm:grow-0">
+        <h1 className="flex-1 shrink-0 whitespace-nowrap text-2xl font-semibold tracking-tight sm:grow-0">
           BCD Tofu House
         </h1>
         <div className="items-center gap-2 ml-auto flex">
           <Button variant="outline" size="sm">
             Discard
           </Button>
-          <Button size="sm">Create Expense</Button>
+          <Button size="sm">Save Expense</Button>
         </div>
       </div>
       <div className="grid gap-4 md:grid-cols-[1fr_250px] lg:grid-cols-3 lg:gap-8">
@@ -55,36 +64,51 @@ export default function CreateExpense() {
               <CardTitle>Expense Details</CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="grid grid-cols-2 gap-6 items-start">
-                <div className="grid gap-3">
-                  <Label htmlFor="name">Name</Label>
-                  <Input
-                    id="name"
-                    type="text"
-                    className="w-full"
-                  />
-                  <Label htmlFor="date">Date</Label>
-                  <Input
-                    id="date"
-                    type="date"
-                    className="w-full"
-                  />
+              <div className="grid gap-6 items-start">
+                <div className="grid grid-cols-2 gap-6 items-start">
+                  <div className="grid gap-3">
+                    <Label htmlFor="name">Name *</Label>
+                    <Input id="name" type="text" className="w-full" />
+                    <Label htmlFor="date">Date *</Label>
+                    <Input id="date" type="date" className="w-full" />
+                  </div>
+                  <div className="grid gap-3">
+                    <Label htmlFor="tip_amount">Tip Amount ($)</Label>
+                    <Input
+                      id="tip_amount"
+                      type="number"
+                      className="w-full"
+                      step="0.01"
+                    />
+                    <Label htmlFor="tax_amount">Tax Amount (%)</Label>
+                    <Input
+                      id="tax_amount"
+                      type="number"
+                      className="w-full"
+                      step="0.01"
+                    />
+                  </div>
                 </div>
                 <div className="grid gap-3">
-                  <Label htmlFor="tip_amount">Tip Amount ($)</Label>
-                  <Input
-                    id="tip_amount"
-                    type="number"
-                    className="w-full"
-                    step="0.01"
-                  />
-                  <Label htmlFor="tax_amount">Tax Amount (%)</Label>
-                  <Input
-                    id="tax_amount"
-                    type="number"
-                    className="w-full"
-                    step="0.01"
-                  />
+                  <Label htmlFor="collaborators">Collaborators</Label>
+                  <MultiSelect>
+                    <MultiSelectTrigger>
+                      <MultiSelectValue placeholder="Select collaborators" />
+                    </MultiSelectTrigger>
+                    <MultiSelectContent>
+                      <MultiSelectSearch placeholder="Enter username or name" />
+                      <MultiSelectList>
+                        <MultiSelectGroup heading="Friends">
+                          <MultiSelectItem value="chrisbryann">Christopher Bryan (@chrisbryann)</MultiSelectItem>
+                          <MultiSelectItem value="next">
+                            Jonathan Thamrun (@jthamrun)
+                          </MultiSelectItem>
+                          <MultiSelectItem value="remix">Steven Keane (@steve88)</MultiSelectItem>
+                        </MultiSelectGroup>
+                      </MultiSelectList>
+                      <MultiSelectEmpty />
+                    </MultiSelectContent>
+                  </MultiSelect>
                 </div>
               </div>
             </CardContent>
