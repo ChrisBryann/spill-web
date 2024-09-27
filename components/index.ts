@@ -1,7 +1,6 @@
 // NybxUI Components
 export { DotPattern } from "./ui/dot-pattern";
 export { BlurFade } from "./ui/blur-fade";
-export { BorderBeam } from "./ui/border-beam";
 export { Button, buttonVariants } from "./ui/button";
 export {
   DropdownMenu,
@@ -111,6 +110,18 @@ export {
   TooltipContent,
   TooltipProvider,
 } from "./ui/tooltip";
+export {
+  Select,
+  SelectGroup,
+  SelectValue,
+  SelectTrigger,
+  SelectContent,
+  SelectLabel,
+  SelectItem,
+  SelectSeparator,
+  SelectScrollUpButton,
+  SelectScrollDownButton,
+} from "./ui/select";
 
 // Self-made UI Components
 export { Header } from "./Header";

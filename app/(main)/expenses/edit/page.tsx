@@ -1,21 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
+import { PlusCircle, MoreHorizontal, UserRoundPen, Trash2 } from "lucide-react";
 import {
-  ChevronLeft,
-  Home,
-  LineChart,
-  Package,
-  Package2,
-  PanelLeft,
-  PlusCircle,
-  Search,
-  Settings,
-  ShoppingCart,
-  Upload,
-  Users2,
-} from "lucide-react";
-import {
-  Badge,
   Button,
   Card,
   CardContent,
@@ -23,6 +9,18 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
   Input,
   Label,
   MultiSelect,
@@ -35,9 +33,16 @@ import {
   MultiSelectTrigger,
   MultiSelectValue,
   OrderSummary,
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+  Separator,
   Table,
   TableBody,
   TableCell,
+  TableFooter,
   TableHead,
   TableHeader,
   TableRow,
@@ -99,11 +104,18 @@ export default function CreateExpense() {
                       <MultiSelectSearch placeholder="Enter username or name" />
                       <MultiSelectList>
                         <MultiSelectGroup heading="Friends">
-                          <MultiSelectItem value="chrisbryann">Christopher Bryan (@chrisbryann)</MultiSelectItem>
-                          <MultiSelectItem value="next">
+                          <MultiSelectItem value="chrisbryann">
+                            Christopher Bryan (@chrisbryann)
+                          </MultiSelectItem>
+                          <MultiSelectItem value="jthamrun">
                             Jonathan Thamrun (@jthamrun)
                           </MultiSelectItem>
-                          <MultiSelectItem value="remix">Steven Keane (@steve88)</MultiSelectItem>
+                          <MultiSelectItem value="steve88">
+                            Steven Keane (@steve88)
+                          </MultiSelectItem>
+                          <MultiSelectItem value="nhartanto">
+                            Nathanael Hartanto (@nhartanto)
+                          </MultiSelectItem>
                         </MultiSelectGroup>
                       </MultiSelectList>
                       <MultiSelectEmpty />
@@ -113,7 +125,7 @@ export default function CreateExpense() {
               </div>
             </CardContent>
           </Card>
-          <Card x-chunk="dashboard-07-chunk-1">
+          <Card x-chunk="expense-items">
             <CardHeader>
               <CardTitle>Expense Items</CardTitle>
             </CardHeader>
@@ -121,55 +133,416 @@ export default function CreateExpense() {
               <Table>
                 <TableHeader>
                   <TableRow>
-                    <TableHead className="w-[100px]">SKU</TableHead>
-                    <TableHead>Stock</TableHead>
-                    <TableHead>Price</TableHead>
+                    <TableHead className="w-[100px]">Quantity</TableHead>
+                    <TableHead>Name</TableHead>
+                    <TableHead>Price (per item)</TableHead>
+                    <TableHead className="hidden">Edit</TableHead>
                   </TableRow>
                 </TableHeader>
                 <TableBody>
                   <TableRow>
-                    <TableCell className="font-semibold">GGPC-001</TableCell>
+                    <TableCell className="font-semibold">1</TableCell>
+                    <TableCell>Rice</TableCell>
+                    <TableCell>1.99</TableCell>
                     <TableCell>
-                      <Label htmlFor="stock-1" className="sr-only">
-                        Stock
-                      </Label>
-                      <Input id="stock-1" type="number" defaultValue="100" />
-                    </TableCell>
-                    <TableCell>
-                      <Label htmlFor="price-1" className="sr-only">
-                        Price
-                      </Label>
-                      <Input id="price-1" type="number" defaultValue="99.99" />
+                      <Dialog>
+                        <DropdownMenu>
+                          <DropdownMenuTrigger asChild>
+                            <Button
+                              aria-haspopup="true"
+                              size="icon"
+                              variant="ghost"
+                            >
+                              <MoreHorizontal className="size-4" />
+                              <span className="sr-only">Toggle menu</span>
+                            </Button>
+                          </DropdownMenuTrigger>
+                          <DropdownMenuContent align="end">
+                            <DropdownMenuItem asChild>
+                              <DialogTrigger className="w-full flex gap-1">
+                                <UserRoundPen className="size-4" />
+                                Edit Item
+                              </DialogTrigger>
+                            </DropdownMenuItem>
+                            <DropdownMenuItem className="text-destructive gap-1">
+                              <Trash2 className="size-4" />
+                              Delete
+                            </DropdownMenuItem>
+                          </DropdownMenuContent>
+                        </DropdownMenu>
+                        <DialogContent>
+                          <DialogHeader>
+                            <DialogTitle>Item info</DialogTitle>
+                          </DialogHeader>
+                          <div className="grid gap-2">
+                            <div className="grid gap-2">
+                              <Label htmlFor="item_name_1">Name</Label>
+                              <Input
+                                id="item_name_1"
+                                type="text"
+                                defaultValue="Rice"
+                              />
+                            </div>
+                            <div className="grid grid-cols-2 gap-2">
+                              <div className="grid gap-2">
+                                <Label htmlFor="quantity_1">Quantity</Label>
+                                <Input
+                                  id="quantity_1"
+                                  type="number"
+                                  defaultValue="1"
+                                />
+                              </div>
+                              <div className="grid gap-2">
+                                <Label htmlFor="price_1">Price (per item)</Label>
+                                <Input
+                                  id="price_1"
+                                  type="number"
+                                  step="0.01"
+                                  defaultValue="1.99"
+                                />
+                              </div>
+                            </div>
+                          </div>
+                          <Separator />
+                          <DialogTitle>Groups</DialogTitle>
+                          <Select>
+                            <SelectTrigger>
+                              <SelectValue placeholder="Select item group" />
+                            </SelectTrigger>
+                            <SelectContent>
+                              <SelectItem value="group_1">Group 1</SelectItem>
+                              <SelectItem value="group_2">Group 2</SelectItem>
+                              <SelectItem value="group_3">Group 3</SelectItem>
+                              <SelectItem value="group_4">Group 4</SelectItem>
+                            </SelectContent>
+                          </Select>
+                          <div className="flex justify-between items-end">
+                            <div className="grid gap-2">
+                              <DialogDescription className="text-secondary-foreground">
+                                Split option
+                              </DialogDescription>
+                              <Select defaultValue="equal">
+                                <SelectTrigger className="w-fit">
+                                  <SelectValue />
+                                </SelectTrigger>
+                                <SelectContent>
+                                  <SelectItem value="equal">Equal</SelectItem>
+                                  <SelectItem value="individual">
+                                    Individual
+                                  </SelectItem>
+                                </SelectContent>
+                              </Select>
+                            </div>
+                            <Button className="gap-1">
+                              <PlusCircle className="size-3.5" />
+                              Add Person
+                            </Button>
+                          </div>
+                          <DialogDescription className="text-secondary-foreground mx-auto">No person added!</DialogDescription>
+                          <Table>
+                            <TableHeader>
+                              <TableRow>
+                                <TableHead>
+                                  Person
+                                </TableHead>
+                                <TableHead className="w-[100px]">Amount</TableHead>
+                              </TableRow>
+                            </TableHeader>
+                            <TableBody>
+                              <TableRow>
+                                <TableCell>Christopher Bryan</TableCell>
+                                <TableCell>0.99</TableCell>
+                              </TableRow>
+                              <TableRow>
+                                <TableCell>Jonathan Thamrun</TableCell>
+                                <TableCell>0.99</TableCell>
+                              </TableRow>
+                            </TableBody>
+                          </Table>
+                          <DialogFooter className="mx-auto">
+                          <DialogClose asChild>
+                            <Button variant="secondary">
+                              Close
+                            </Button>
+                          </DialogClose>
+                          <DialogClose asChild>
+                            <Button>
+                              Save Changes
+                            </Button>
+                          </DialogClose>
+                        </DialogFooter>
+                        </DialogContent>
+                      </Dialog>
                     </TableCell>
                   </TableRow>
                   <TableRow>
-                    <TableCell className="font-semibold">GGPC-002</TableCell>
+                    <TableCell className="font-semibold">1</TableCell>
+                    <TableCell>Rice</TableCell>
+                    <TableCell>1.99</TableCell>
                     <TableCell>
-                      <Label htmlFor="stock-2" className="sr-only">
-                        Stock
-                      </Label>
-                      <Input id="stock-2" type="number" defaultValue="143" />
-                    </TableCell>
-                    <TableCell>
-                      <Label htmlFor="price-2" className="sr-only">
-                        Price
-                      </Label>
-                      <Input id="price-2" type="number" defaultValue="99.99" />
+                      <Dialog>
+                        <DropdownMenu>
+                          <DropdownMenuTrigger asChild>
+                            <Button
+                              aria-haspopup="true"
+                              size="icon"
+                              variant="ghost"
+                            >
+                              <MoreHorizontal className="size-4" />
+                              <span className="sr-only">Toggle menu</span>
+                            </Button>
+                          </DropdownMenuTrigger>
+                          <DropdownMenuContent align="end">
+                            <DropdownMenuItem asChild>
+                              <DialogTrigger className="w-full flex gap-1">
+                                <UserRoundPen className="size-4" />
+                                Edit Item
+                              </DialogTrigger>
+                            </DropdownMenuItem>
+                            <DropdownMenuItem className="text-destructive gap-1">
+                              <Trash2 className="size-4" />
+                              Delete
+                            </DropdownMenuItem>
+                          </DropdownMenuContent>
+                        </DropdownMenu>
+                        <DialogContent>
+                          <DialogHeader>
+                            <DialogTitle>Item info</DialogTitle>
+                          </DialogHeader>
+                          <div className="grid gap-2">
+                            <div className="grid gap-2">
+                              <Label htmlFor="item_name_1">Name</Label>
+                              <Input
+                                id="item_name_1"
+                                type="text"
+                                defaultValue="Rice"
+                              />
+                            </div>
+                            <div className="grid grid-cols-2 gap-2">
+                              <div className="grid gap-2">
+                                <Label htmlFor="quantity_1">Quantity</Label>
+                                <Input
+                                  id="quantity_1"
+                                  type="number"
+                                  defaultValue="1"
+                                />
+                              </div>
+                              <div className="grid gap-2">
+                                <Label htmlFor="price_1">Price (per item)</Label>
+                                <Input
+                                  id="price_1"
+                                  type="number"
+                                  step="0.01"
+                                  defaultValue="1.99"
+                                />
+                              </div>
+                            </div>
+                          </div>
+                          <Separator />
+                          <DialogTitle>Groups</DialogTitle>
+                          <Select>
+                            <SelectTrigger>
+                              <SelectValue placeholder="Select item group" />
+                            </SelectTrigger>
+                            <SelectContent>
+                              <SelectItem value="group_1">Group 1</SelectItem>
+                              <SelectItem value="group_2">Group 2</SelectItem>
+                              <SelectItem value="group_3">Group 3</SelectItem>
+                              <SelectItem value="group_4">Group 4</SelectItem>
+                            </SelectContent>
+                          </Select>
+                          <div className="flex justify-between items-end">
+                            <div className="grid gap-2">
+                              <DialogDescription className="text-secondary-foreground">
+                                Split option
+                              </DialogDescription>
+                              <Select defaultValue="equal">
+                                <SelectTrigger className="w-fit">
+                                  <SelectValue />
+                                </SelectTrigger>
+                                <SelectContent>
+                                  <SelectItem value="equal">Equal</SelectItem>
+                                  <SelectItem value="individual">
+                                    Individual
+                                  </SelectItem>
+                                </SelectContent>
+                              </Select>
+                            </div>
+                            <Button className="gap-1">
+                              <PlusCircle className="size-3.5" />
+                              Add Person
+                            </Button>
+                          </div>
+                          <DialogDescription className="text-secondary-foreground mx-auto">No person added!</DialogDescription>
+                          <Table>
+                            <TableHeader>
+                              <TableRow>
+                                <TableHead>
+                                  Person
+                                </TableHead>
+                                <TableHead className="w-[100px]">Amount</TableHead>
+                              </TableRow>
+                            </TableHeader>
+                            <TableBody>
+                              <TableRow>
+                                <TableCell>Christopher Bryan</TableCell>
+                                <TableCell>0.99</TableCell>
+                              </TableRow>
+                              <TableRow>
+                                <TableCell>Jonathan Thamrun</TableCell>
+                                <TableCell>0.99</TableCell>
+                              </TableRow>
+                            </TableBody>
+                          </Table>
+                          <DialogFooter className="mx-auto">
+                          <DialogClose asChild>
+                            <Button variant="secondary">
+                              Close
+                            </Button>
+                          </DialogClose>
+                          <DialogClose asChild>
+                            <Button>
+                              Save Changes
+                            </Button>
+                          </DialogClose>
+                        </DialogFooter>
+                        </DialogContent>
+                      </Dialog>
                     </TableCell>
                   </TableRow>
                   <TableRow>
-                    <TableCell className="font-semibold">GGPC-003</TableCell>
+                    <TableCell className="font-semibold">1</TableCell>
+                    <TableCell>Rice</TableCell>
+                    <TableCell>1.99</TableCell>
                     <TableCell>
-                      <Label htmlFor="stock-3" className="sr-only">
-                        Stock
-                      </Label>
-                      <Input id="stock-3" type="number" defaultValue="32" />
-                    </TableCell>
-                    <TableCell>
-                      <Label htmlFor="price-3" className="sr-only">
-                        Stock
-                      </Label>
-                      <Input id="price-3" type="number" defaultValue="99.99" />
+                      <Dialog>
+                        <DropdownMenu>
+                          <DropdownMenuTrigger asChild>
+                            <Button
+                              aria-haspopup="true"
+                              size="icon"
+                              variant="ghost"
+                            >
+                              <MoreHorizontal className="size-4" />
+                              <span className="sr-only">Toggle menu</span>
+                            </Button>
+                          </DropdownMenuTrigger>
+                          <DropdownMenuContent align="end">
+                            <DropdownMenuItem asChild>
+                              <DialogTrigger className="w-full flex gap-1">
+                                <UserRoundPen className="size-4" />
+                                Edit Item
+                              </DialogTrigger>
+                            </DropdownMenuItem>
+                            <DropdownMenuItem className="text-destructive gap-1">
+                              <Trash2 className="size-4" />
+                              Delete
+                            </DropdownMenuItem>
+                          </DropdownMenuContent>
+                        </DropdownMenu>
+                        <DialogContent>
+                          <DialogHeader>
+                            <DialogTitle>Item info</DialogTitle>
+                          </DialogHeader>
+                          <div className="grid gap-2">
+                            <div className="grid gap-2">
+                              <Label htmlFor="item_name_1">Name</Label>
+                              <Input
+                                id="item_name_1"
+                                type="text"
+                                defaultValue="Rice"
+                              />
+                            </div>
+                            <div className="grid grid-cols-2 gap-2">
+                              <div className="grid gap-2">
+                                <Label htmlFor="quantity_1">Quantity</Label>
+                                <Input
+                                  id="quantity_1"
+                                  type="number"
+                                  defaultValue="1"
+                                />
+                              </div>
+                              <div className="grid gap-2">
+                                <Label htmlFor="price_1">Price (per item)</Label>
+                                <Input
+                                  id="price_1"
+                                  type="number"
+                                  step="0.01"
+                                  defaultValue="1.99"
+                                />
+                              </div>
+                            </div>
+                          </div>
+                          <Separator />
+                          <DialogTitle>Groups</DialogTitle>
+                          <Select>
+                            <SelectTrigger>
+                              <SelectValue placeholder="Select item group" />
+                            </SelectTrigger>
+                            <SelectContent>
+                              <SelectItem value="group_1">Group 1</SelectItem>
+                              <SelectItem value="group_2">Group 2</SelectItem>
+                              <SelectItem value="group_3">Group 3</SelectItem>
+                              <SelectItem value="group_4">Group 4</SelectItem>
+                            </SelectContent>
+                          </Select>
+                          <div className="flex justify-between items-end">
+                            <div className="grid gap-2">
+                              <DialogDescription className="text-secondary-foreground">
+                                Split option
+                              </DialogDescription>
+                              <Select defaultValue="equal">
+                                <SelectTrigger className="w-fit">
+                                  <SelectValue />
+                                </SelectTrigger>
+                                <SelectContent>
+                                  <SelectItem value="equal">Equal</SelectItem>
+                                  <SelectItem value="individual">
+                                    Individual
+                                  </SelectItem>
+                                </SelectContent>
+                              </Select>
+                            </div>
+                            <Button className="gap-1">
+                              <PlusCircle className="size-3.5" />
+                              Add Person
+                            </Button>
+                          </div>
+                          <DialogDescription className="text-secondary-foreground mx-auto">No person added!</DialogDescription>
+                          <Table>
+                            <TableHeader>
+                              <TableRow>
+                                <TableHead>
+                                  Person
+                                </TableHead>
+                                <TableHead className="w-[100px]">Amount</TableHead>
+                              </TableRow>
+                            </TableHeader>
+                            <TableBody>
+                              <TableRow>
+                                <TableCell>Christopher Bryan</TableCell>
+                                <TableCell>0.99</TableCell>
+                              </TableRow>
+                              <TableRow>
+                                <TableCell>Jonathan Thamrun</TableCell>
+                                <TableCell>0.99</TableCell>
+                              </TableRow>
+                            </TableBody>
+                          </Table>
+                          <DialogFooter className="mx-auto">
+                          <DialogClose asChild>
+                            <Button variant="secondary">
+                              Close
+                            </Button>
+                          </DialogClose>
+                          <DialogClose asChild>
+                            <Button>
+                              Save Changes
+                            </Button>
+                          </DialogClose>
+                        </DialogFooter>
+                        </DialogContent>
+                      </Dialog>
                     </TableCell>
                   </TableRow>
                 </TableBody>
