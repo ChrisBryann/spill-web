@@ -1,0 +1,118 @@
+import {
+    Button,
+    DialogClose,
+    DialogContent,
+    DialogDescription,
+    DialogFooter,
+    DialogHeader,
+    DialogTitle,
+    Input,
+    Label,
+    Select,
+    SelectContent,
+    SelectItem,
+    SelectTrigger,
+    SelectValue,
+    Separator,
+    Table,
+    TableBody,
+    TableCell,
+    TableHead,
+    TableHeader,
+    TableRow,
+  } from "@/components";
+  import { PlusCircle } from "lucide-react";
+  
+  /*
+  
+  ADD EXPENSE ITEM DIALOG Component
+  Used when user wants to add an expense item
+  
+  */
+export default function AddExpenseItemDialog() {
+    return (
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>Item info</DialogTitle>
+          </DialogHeader>
+          <div className="grid gap-2">
+            <div className="grid gap-2">
+              <Label htmlFor="item_name_1">Name *</Label>
+              <Input id="item_name_1" type="text" defaultValue="Rice" required/>
+            </div>
+            <div className="grid grid-cols-2 gap-2">
+              <div className="grid gap-2">
+                <Label htmlFor="quantity_1">Quantity *</Label>
+                <Input id="quantity_1" type="number" defaultValue="1" min={1} required/>
+              </div>
+              <div className="grid gap-2">
+                <Label htmlFor="price_1">Price (per item) *</Label>
+                <Input id="price_1" type="number" step="0.01" defaultValue="1.99" required/>
+              </div>
+            </div>
+          </div>
+          <Separator />
+          <DialogTitle>Groups</DialogTitle>
+          <Select>
+            <SelectTrigger>
+              <SelectValue placeholder="Select item group" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="group_1">Group 1</SelectItem>
+              <SelectItem value="group_2">Group 2</SelectItem>
+              <SelectItem value="group_3">Group 3</SelectItem>
+              <SelectItem value="group_4">Group 4</SelectItem>
+            </SelectContent>
+          </Select>
+          <div className="flex justify-between items-end">
+            <div className="grid gap-2">
+              <DialogDescription className="text-secondary-foreground">
+                Split option
+              </DialogDescription>
+              <Select defaultValue="equal">
+                <SelectTrigger className="w-fit">
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="equal">Equal</SelectItem>
+                  <SelectItem value="individual">Individual</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+            <Button className="gap-1">
+              <PlusCircle className="size-3.5" />
+              Add Person
+            </Button>
+          </div>
+          <DialogDescription className="text-secondary-foreground mx-auto">
+            No person added!
+          </DialogDescription>
+          <Table>
+            <TableHeader>
+              <TableRow>
+                <TableHead>Person</TableHead>
+                <TableHead className="w-[100px]">Amount</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              <TableRow>
+                <TableCell>Christopher Bryan</TableCell>
+                <TableCell>0.99</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell>Jonathan Thamrun</TableCell>
+                <TableCell>0.99</TableCell>
+              </TableRow>
+            </TableBody>
+          </Table>
+          <DialogFooter className="mx-auto">
+            <DialogClose asChild>
+              <Button variant="secondary">Close</Button>
+            </DialogClose>
+            <DialogClose asChild>
+              <Button>Add</Button>
+            </DialogClose>
+          </DialogFooter>
+        </DialogContent>
+      );
+}

@@ -156,27 +156,6 @@ const OrderSummary = () => {
           </dl>
         </div>
       </CardContent>
-      <CardFooter className="bg-muted/50 flex flex-row items-center border-t px-6 py-3">
-        <div className="text-muted-foreground text-xs">
-          Updated <time dateTime="2023-11-23">November 23, 2023</time>
-        </div>
-        <Pagination className="ml-auto mr-0 w-auto">
-          <PaginationContent>
-            <PaginationItem>
-              <Button size="icon" variant="outline" className="size-6">
-                <ChevronLeft className="size-3.5" />
-                <span className="sr-only">Previous Order</span>
-              </Button>
-            </PaginationItem>
-            <PaginationItem>
-              <Button size="icon" variant="outline" className="size-6">
-                <ChevronRight className="size-3.5" />
-                <span className="sr-only">Next Order</span>
-              </Button>
-            </PaginationItem>
-          </PaginationContent>
-        </Pagination>
-      </CardFooter>
     </Card>
   );
 };
