@@ -31,23 +31,36 @@ Used when user wants to edit one of the expense item
 */
 export default function EditExpenseItemDialog() {
   return (
-    <DialogContent>
+    <DialogContent className="w-[375px] sm:w-full">
       <DialogHeader>
         <DialogTitle>Item info</DialogTitle>
       </DialogHeader>
       <div className="grid gap-2">
         <div className="grid gap-2">
           <Label htmlFor="item_name_1">Name *</Label>
-          <Input id="item_name_1" type="text" defaultValue="Rice" required/>
+          <Input id="item_name_1" type="text" defaultValue="Rice" required />
         </div>
         <div className="grid grid-cols-2 gap-2">
           <div className="grid gap-2">
             <Label htmlFor="quantity_1">Quantity *</Label>
-            <Input id="quantity_1" type="number" defaultValue="1" min={1} required/>
+            <Input
+              id="quantity_1"
+              type="number"
+              defaultValue="1"
+              min={1}
+              required
+            />
           </div>
           <div className="grid gap-2">
             <Label htmlFor="price_1">Price (per item) *</Label>
-            <Input id="price_1" type="number" step="0.01" defaultValue="1.99" required/>
+            <Input
+              className="text-ellipsis"
+              id="price_1"
+              type="number"
+              step="0.01"
+              defaultValue="1.99"
+              required
+            />
           </div>
         </div>
       </div>
@@ -91,21 +104,37 @@ export default function EditExpenseItemDialog() {
         <TableHeader>
           <TableRow>
             <TableHead>Person</TableHead>
-            <TableHead className="w-[100px]">Amount</TableHead>
+            <TableHead className="w-1/2">Amount</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
           <TableRow>
             <TableCell>Christopher Bryan</TableCell>
-            <TableCell>0.99</TableCell>
+            <TableCell>
+              <Input
+                className="text-ellipsis"
+                type="number"
+                step="0.01"
+                defaultValue="0.01"
+                required
+              />
+            </TableCell>
           </TableRow>
           <TableRow>
             <TableCell>Jonathan Thamrun</TableCell>
-            <TableCell>0.99</TableCell>
+            <TableCell>
+              <Input
+                className="text-ellipsis"
+                type="number"
+                step="0.01"
+                defaultValue="0.01"
+                required
+              />
+            </TableCell>
           </TableRow>
         </TableBody>
       </Table>
-      <DialogFooter className="mx-auto">
+      <DialogFooter className="mx-auto flex flex-row gap-2 md:gap-0">
         <DialogClose asChild>
           <Button variant="secondary">Close</Button>
         </DialogClose>

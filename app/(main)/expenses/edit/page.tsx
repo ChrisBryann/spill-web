@@ -59,17 +59,16 @@ export default function CreateExpense() {
   return (
     <main className="grid flex-1 items-start gap-4 p-4 sm:px-6 sm:py-0 md:gap-8">
       <div className="flex items-center gap-4">
-        {/* <h1 className="flex-1 shrink-0 whitespace-nowrap text-2xl font-semibold tracking-tight sm:grow-0">
-          BCD Tofu House
-        </h1> */}
         <Dialog>
           <DialogTrigger asChild>
-            <Button variant="secondary" className="gap-2">
+            <Button variant="secondary" className="gap-1">
               <UserPlus className="size-3.5" />
-              Collaborators
+              <span className="sr-only sm:not-sr-only sm:whitespace-nowrap">
+                Collaborators
+              </span>
             </Button>
           </DialogTrigger>
-          <DialogContent>
+          <DialogContent className="w-[375px] sm:w-full">
             <DialogHeader>Add Collaborators</DialogHeader>
             <DialogDescription>
               Invite users who participated in the expense.
@@ -108,7 +107,7 @@ export default function CreateExpense() {
           <Button size="sm">Save Expense</Button>
         </div>
       </div>
-      <div className="grid gap-4 md:grid-cols-[1fr_250px] lg:grid-cols-3 lg:gap-8">
+      <div className="grid gap-4 lg:grid-cols-3 lg:gap-8">
         <div className="grid auto-rows-max items-start gap-4 lg:col-span-2 lg:gap-8">
           <Card x-chunk="expense-info">
             <CardHeader>
@@ -116,7 +115,7 @@ export default function CreateExpense() {
             </CardHeader>
             <CardContent>
               <div className="grid gap-6 items-start">
-                <div className="grid grid-cols-2 gap-6 items-start">
+                <div className="grid md:grid-cols-2 gap-6 items-start">
                   <div className="grid gap-3">
                     <Label htmlFor="name">Name *</Label>
                     <Input id="name" type="text" className="w-full" required />
@@ -149,20 +148,24 @@ export default function CreateExpense() {
             </CardHeader>
             <CardContent>
               <Table containerClassname="max-h-96">
-                <TableHeader className="bg-card">
+                <TableHeader className="bg-card w-full">
                   <TableRow>
-                    <TableHead className="w-[100px]">Quantity</TableHead>
+                    <TableHead className="w-[25px]">Qty</TableHead>
                     <TableHead>Name</TableHead>
-                    <TableHead>Price (per item)</TableHead>
-                    <TableHead> </TableHead>
+                    <TableHead className="hidden sm:table-cell">
+                      Price (per item)
+                    </TableHead>
+                    <TableHead>
+                      <span className="sr-only">Actions</span>
+                    </TableHead>
                   </TableRow>
                 </TableHeader>
                 <TableBody className="overflow-y-auto">
                   <TableRow>
                     <TableCell className="font-semibold">1</TableCell>
                     <TableCell>Rice</TableCell>
-                    <TableCell>1.99</TableCell>
-                    <TableCell>
+                    <TableCell className="hidden sm:table-cell">1.99</TableCell>
+                    <TableCell className="text-center sm:text-left">
                       <Dialog>
                         <DropdownMenu>
                           <DropdownMenuTrigger asChild>
@@ -195,8 +198,8 @@ export default function CreateExpense() {
                   <TableRow>
                     <TableCell className="font-semibold">1</TableCell>
                     <TableCell>Rice</TableCell>
-                    <TableCell>1.99</TableCell>
-                    <TableCell>
+                    <TableCell className="hidden sm:table-cell">1.99</TableCell>
+                    <TableCell className="text-center sm:text-left">
                       <Dialog>
                         <DropdownMenu>
                           <DropdownMenuTrigger asChild>
@@ -229,8 +232,8 @@ export default function CreateExpense() {
                   <TableRow>
                     <TableCell className="font-semibold">1</TableCell>
                     <TableCell>Rice</TableCell>
-                    <TableCell>1.99</TableCell>
-                    <TableCell>
+                    <TableCell className="hidden sm:table-cell">1.99</TableCell>
+                    <TableCell className="text-center sm:text-left">
                       <Dialog>
                         <DropdownMenu>
                           <DropdownMenuTrigger asChild>
@@ -263,8 +266,8 @@ export default function CreateExpense() {
                   <TableRow>
                     <TableCell className="font-semibold">1</TableCell>
                     <TableCell>Rice</TableCell>
-                    <TableCell>1.99</TableCell>
-                    <TableCell>
+                    <TableCell className="hidden sm:table-cell">1.99</TableCell>
+                    <TableCell className="text-center sm:text-left">
                       <Dialog>
                         <DropdownMenu>
                           <DropdownMenuTrigger asChild>
@@ -297,8 +300,8 @@ export default function CreateExpense() {
                   <TableRow>
                     <TableCell className="font-semibold">1</TableCell>
                     <TableCell>Rice</TableCell>
-                    <TableCell>1.99</TableCell>
-                    <TableCell>
+                    <TableCell className="hidden sm:table-cell">1.99</TableCell>
+                    <TableCell className="text-center sm:text-left">
                       <Dialog>
                         <DropdownMenu>
                           <DropdownMenuTrigger asChild>
@@ -331,8 +334,8 @@ export default function CreateExpense() {
                   <TableRow>
                     <TableCell className="font-semibold">1</TableCell>
                     <TableCell>Rice</TableCell>
-                    <TableCell>1.99</TableCell>
-                    <TableCell>
+                    <TableCell className="hidden sm:table-cell">1.99</TableCell>
+                    <TableCell className="text-center sm:text-left">
                       <Dialog>
                         <DropdownMenu>
                           <DropdownMenuTrigger asChild>
