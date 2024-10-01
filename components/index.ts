@@ -122,7 +122,16 @@ export {
   SelectScrollUpButton,
   SelectScrollDownButton,
 } from "./ui/select";
+export {
+  ChartContainer,
+  ChartTooltip,
+  ChartTooltipContent,
+  ChartLegend,
+  ChartLegendContent,
+  ChartStyle,
+} from "./ui/charts";
+export type { ChartConfig } from "./ui/charts";
 
 // Self-made UI Components
 export { Header } from "./Header";
-export { OrderSummary } from "./OrderSummary";
+export { PeopleItemBreakdown } from "./PeopleItemBreakdown";

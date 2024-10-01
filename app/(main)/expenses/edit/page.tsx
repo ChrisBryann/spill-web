@@ -37,7 +37,7 @@ import {
   MultiSelectSearch,
   MultiSelectTrigger,
   MultiSelectValue,
-  OrderSummary,
+  PeopleItemBreakdown,
   Select,
   SelectContent,
   SelectItem,
@@ -389,7 +389,7 @@ export default function CreateExpense() {
             </CardFooter>
           </Card>
         </div>
-        <OrderSummary />
+        <PeopleItemBreakdown />
       </div>
       <div className="flex items-center justify-center gap-2 md:hidden">
         <Button variant="outline" size="sm">

@@ -2,7 +2,7 @@ import {
   AvatarCircles,
   BlurFade,
   Button,
-  OrderSummary,
+  PeopleItemBreakdown,
   Table,
   TableBody,
   TableCaption,
@@ -156,7 +156,7 @@ export default function Home() {
               </TableFooter>
             </Table>
           </BlurFade>
-          <OrderSummary />
+          <PeopleItemBreakdown />
         </section>
       </main>
     </div>
