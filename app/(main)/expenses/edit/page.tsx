@@ -6,6 +6,8 @@ import {
   UserRoundPen,
   Trash2,
   UserPlus,
+  ReceiptText,
+  ShoppingBasket,
 } from "lucide-react";
 import {
   Button,
@@ -111,7 +113,10 @@ export default function CreateExpense() {
         <div className="grid auto-rows-max items-start gap-4 lg:col-span-2 lg:gap-8">
           <Card x-chunk="expense-info">
             <CardHeader>
-              <CardTitle>Expense Details</CardTitle>
+              <CardTitle className="flex items-center gap-2">
+                Details
+                <ReceiptText />
+              </CardTitle>
             </CardHeader>
             <CardContent>
               <div className="grid gap-6 items-start">
@@ -144,7 +149,10 @@ export default function CreateExpense() {
           </Card>
           <Card x-chunk="expense-items">
             <CardHeader>
-              <CardTitle>Expense Items</CardTitle>
+              <CardTitle className="flex items-center gap-2">
+                Items
+                <ShoppingBasket/>
+              </CardTitle>
             </CardHeader>
             <CardContent>
               <Table containerClassname="max-h-96">

@@ -31,6 +31,8 @@ import {
   CreditCard,
   ChevronLeft,
   ChevronRight,
+  ChartPie,
+  User,
 } from "lucide-react";
 import { LabelList, Pie, PieChart } from "recharts";
 
@@ -70,8 +72,11 @@ const chartConfig = {
 const PeopleItemBreakdown = () => {
   return (
     <Card className="w-full fixed bottom-0 left-0 z-10 sm:static sm:overflow-hidden sm:z-0 sm:flex sm:flex-col sm:gap-2">
-      <CardHeader>
-        <CardTitle className="hidden sm:block">Breakdown</CardTitle>
+      <CardHeader className="hidden sm:block">
+        <CardTitle className="flex items-center gap-2">
+          Breakdown
+          <ChartPie />
+        </CardTitle>
       </CardHeader>
       <CardContent className="grid grid-cols-subgrid py-2 gap-2 hidden sm:block sm:grow">
         <ChartContainer
@@ -85,7 +90,7 @@ const PeopleItemBreakdown = () => {
             <Pie data={chartData} dataKey="visitors">
               <LabelList
                 dataKey="username"
-                className="fill-foreground"
+                className="fill-white"
                 stroke="none"
                 fontSize={12}
                 formatter={(value: keyof typeof chartConfig) =>
@@ -95,34 +100,62 @@ const PeopleItemBreakdown = () => {
             </Pie>
           </PieChart>
         </ChartContainer>
-        <div className="grid gap-3 text-sm overflow-y-auto max-h-fit ">
-          <div className="font-semibold">Order Details</div>
-          <ul className="grid gap-3">
+        <Separator className="my-2" />
+        <div className="grid gap-3 text-sm">
+          {/* <div className="font-semibold">Order Details</div> */}
+          <div
+            id="breakdown_header"
+            className="flex items-center justify-between font-semibold text-lg"
+          >
+            <User />
+            <span className="text-primary">owes you</span>
+          </div>
+          <ul className="grid gap-4 overflow-y-auto h-40">
             <li className="flex items-center justify-between">
-              <span className="text-muted-foreground">
-                Glimmer Lamps x <span>2</span>
-              </span>
+              <div className="flex flex-col">
+                <span>Christopher Bryan</span>
+                <span className="text-muted-foreground">@chrisbryann</span>
+              </div>
+
               <span>$250.00</span>
             </li>
             <li className="flex items-center justify-between">
-              <span className="text-muted-foreground">
-                Aqua Filters x <span>1</span>
-              </span>
-              <span>$49.00</span>
+              <div className="flex flex-col">
+                <span>Jonathan Thamrun</span>
+                <span className="text-muted-foreground">@jthamrun</span>
+              </div>
+
+              <span>$134.22</span>
+            </li>
+            <li className="flex items-center justify-between">
+              <div className="flex flex-col">
+                <span>Steven Keane</span>
+                <span className="text-muted-foreground">@steve88</span>
+              </div>
+
+              <span>$72.45</span>
+            </li>
+            <li className="flex items-center justify-between">
+              <div className="flex flex-col">
+                <span>Nathanael Hartanto</span>
+                <span className="text-muted-foreground">@nhartanto</span>
+              </div>
+
+              <span>$43.11</span>
             </li>
           </ul>
           <Separator className="my-2" />
-          <ul className="grid gap-3">
+          <ul className="grid gap-3 items-end">
             <li className="flex items-center justify-between">
               <span className="text-muted-foreground">Subtotal</span>
               <span>$299.00</span>
             </li>
             <li className="flex items-center justify-between">
-              <span className="text-muted-foreground">Shipping</span>
+              <span className="text-muted-foreground">Tax</span>
               <span>$5.00</span>
             </li>
             <li className="flex items-center justify-between">
-              <span className="text-muted-foreground">Tax</span>
+              <span className="text-muted-foreground">Tips</span>
               <span>$25.00</span>
             </li>
             {/* <li className="flex items-center justify-between font-semibold">
@@ -132,7 +165,7 @@ const PeopleItemBreakdown = () => {
           </ul>
         </div>
       </CardContent>
-      <CardFooter className="grid gap-1 sm:grid-cols-2">
+      <CardFooter className="grid gap-1 pt-2 sm:grid-cols-2 sm:pt-0">
         <CardDescription>Total</CardDescription>
         <CardTitle>
           <div className="grid grid-cols-2 sm:grid-cols-1 items-center gap-1 sm:gap-2 sm:text-right">
@@ -144,46 +177,72 @@ const PeopleItemBreakdown = () => {
                 </Button>
               </DialogTrigger>
               <DialogContent className="max-w-80">
-              <div className="grid gap-3 text-sm overflow-y-auto max-h-80">
-                      <div className="font-semibold">Expense Breakdown</div>
-                      <ul className="grid gap-3">
-                        <li className="flex items-center justify-between">
-                          <span className="text-muted-foreground">
-                            Glimmer Lamps x <span>2</span>
-                          </span>
-                          <span>$250.00</span>
-                        </li>
-                        <li className="flex items-center justify-between">
-                          <span className="text-muted-foreground">
-                            Aqua Filters x <span>1</span>
-                          </span>
-                          <span>$49.00</span>
-                        </li>
-                      </ul>
-                      <Separator className="my-2" />
-                      <ul className="grid gap-3">
-                        <li className="flex items-center justify-between">
-                          <span className="text-muted-foreground">
-                            Subtotal
-                          </span>
-                          <span>$299.00</span>
-                        </li>
-                        <li className="flex items-center justify-between">
-                          <span className="text-muted-foreground">
-                            Shipping
-                          </span>
-                          <span>$5.00</span>
-                        </li>
-                        <li className="flex items-center justify-between">
-                          <span className="text-muted-foreground">Tax</span>
-                          <span>$25.00</span>
-                        </li>
-                        <li className="flex items-center justify-between font-semibold">
-                          <span className="text-muted-foreground">Total</span>
-                          <span>$329.00</span>
-                        </li>
-                      </ul>
-                    </div>
+                <div className="grid gap-3 text-sm py-1">
+                  <div
+                    id="breakdown_header"
+                    className="flex items-center justify-between font-semibold text-lg"
+                  >
+                    <User />
+                    <span className="text-primary">owes you</span>
+                  </div>
+                  <ul className="grid gap-4 overflow-y-auto h-40">
+                    <li className="flex items-center justify-between">
+                      <div className="flex flex-col">
+                        <span>Christopher Bryan</span>
+                        <span className="text-muted-foreground">
+                          @chrisbryann
+                        </span>
+                      </div>
+
+                      <span>$250.00</span>
+                    </li>
+                    <li className="flex items-center justify-between">
+                      <div className="flex flex-col">
+                        <span>Jonathan Thamrun</span>
+                        <span className="text-muted-foreground">@jthamrun</span>
+                      </div>
+
+                      <span>$134.22</span>
+                    </li>
+                    <li className="flex items-center justify-between">
+                      <div className="flex flex-col">
+                        <span>Steven Keane</span>
+                        <span className="text-muted-foreground">@steve88</span>
+                      </div>
+
+                      <span>$72.45</span>
+                    </li>
+                    <li className="flex items-center justify-between">
+                      <div className="flex flex-col">
+                        <span>Nathanael Hartanto</span>
+                        <span className="text-muted-foreground">
+                          @nhartanto
+                        </span>
+                      </div>
+
+                      <span>$43.11</span>
+                    </li>
+                  </ul>
+                  <Separator className="my-2" />
+                  <ul className="grid gap-3 items-end">
+                    <li className="flex items-center justify-between">
+                      <span className="text-muted-foreground">Subtotal</span>
+                      <span>$299.00</span>
+                    </li>
+                    <li className="flex items-center justify-between">
+                      <span className="text-muted-foreground">Tax</span>
+                      <span>$5.00</span>
+                    </li>
+                    <li className="flex items-center justify-between">
+                      <span className="text-muted-foreground">Tips</span>
+                      <span>$25.00</span>
+                    </li>
+                    <li className="flex items-center justify-between font-semibold">
+                      <span className="text-muted-foreground">Total</span>
+                      <span>$329.00</span>
+                    </li>
+                  </ul>
+                </div>
               </DialogContent>
             </Dialog>
           </div>
