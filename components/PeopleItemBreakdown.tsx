@@ -25,12 +25,6 @@ import {
   DialogContent,
 } from "@/components";
 import {
-  Copy,
-  Truck,
-  MoreVertical,
-  CreditCard,
-  ChevronLeft,
-  ChevronRight,
   ChartPie,
   User,
 } from "lucide-react";
@@ -176,7 +170,7 @@ const PeopleItemBreakdown = () => {
                   Breakdown
                 </Button>
               </DialogTrigger>
-              <DialogContent className="max-w-80">
+              <DialogContent className="max-w-96">
                 <div className="grid gap-3 text-sm py-1">
                   <div
                     id="breakdown_header"
@@ -185,7 +179,7 @@ const PeopleItemBreakdown = () => {
                     <User />
                     <span className="text-primary">owes you</span>
                   </div>
-                  <ul className="grid gap-4 overflow-y-auto h-40">
+                  <ul className="grid gap-4 overflow-y-auto max-h-96">
                     <li className="flex items-center justify-between">
                       <div className="flex flex-col">
                         <span>Christopher Bryan</span>
