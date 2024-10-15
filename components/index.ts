@@ -135,3 +135,4 @@ export type { ChartConfig } from "./ui/charts";
 // Self-made UI Components
 export { Header } from "./Header";
 export { PeopleItemBreakdown } from "./PeopleItemBreakdown";
+export { FriendCard } from "./FriendCard";
