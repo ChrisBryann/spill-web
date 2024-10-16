@@ -1,3 +1,4 @@
+"use client";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -8,6 +9,7 @@ import {
   UserPlus,
   ReceiptText,
   ShoppingBasket,
+  ChevronsUpDown,
 } from "lucide-react";
 import {
   Button,
@@ -16,6 +18,9 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
   Dialog,
   DialogClose,
   DialogContent,
@@ -53,11 +58,12 @@ import {
   TableHead,
   TableHeader,
   TableRow,
+  AddExpenseItemDialog,
+  EditExpenseItemDialog,
+  ExpenseItemRow,
 } from "@/components";
-import EditExpenseItemDialog from "@/components/EditExpenseItemDialog";
-import AddExpenseItemDialog from "@/components/AddExpenseItemDialog";
 
-export default function CreateExpense() {
+export default function EditExpense() {
   return (
     <main className="grid flex-1 items-start gap-4 p-4 sm:px-6 sm:py-0 md:gap-8">
       <div className="flex items-center gap-4">
@@ -135,7 +141,7 @@ export default function CreateExpense() {
                       className="w-full"
                       step="0.01"
                     />
-                    <Label htmlFor="tax_amount">Tax Amount (%)</Label>
+                    <Label htmlFor="tax_amount">Tax Amount ($)</Label>
                     <Input
                       id="tax_amount"
                       type="number"
@@ -147,244 +153,15 @@ export default function CreateExpense() {
               </div>
             </CardContent>
           </Card>
-          <Card x-chunk="expense-items">
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                Items
-                <ShoppingBasket/>
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <Table containerClassname="max-h-96">
-                <TableHeader className="bg-card w-full">
-                  <TableRow>
-                    <TableHead className="w-[25px]">Qty</TableHead>
-                    <TableHead>Name</TableHead>
-                    <TableHead className="hidden sm:table-cell">
-                      Price (per item)
-                    </TableHead>
-                    <TableHead>
-                      <span className="sr-only">Actions</span>
-                    </TableHead>
-                  </TableRow>
-                </TableHeader>
-                <TableBody className="overflow-y-auto">
-                  <TableRow>
-                    <TableCell className="font-semibold">1</TableCell>
-                    <TableCell>Rice</TableCell>
-                    <TableCell className="hidden sm:table-cell">1.99</TableCell>
-                    <TableCell className="text-center sm:text-left">
-                      <Dialog>
-                        <DropdownMenu>
-                          <DropdownMenuTrigger asChild>
-                            <Button
-                              aria-haspopup="true"
-                              size="icon"
-                              variant="ghost"
-                            >
-                              <MoreHorizontal className="size-4" />
-                              <span className="sr-only">Toggle menu</span>
-                            </Button>
-                          </DropdownMenuTrigger>
-                          <DropdownMenuContent align="end">
-                            <DropdownMenuItem asChild>
-                              <DialogTrigger className="w-full flex gap-1">
-                                <UserRoundPen className="size-4" />
-                                Edit Item
-                              </DialogTrigger>
-                            </DropdownMenuItem>
-                            <DropdownMenuItem className="text-destructive gap-1">
-                              <Trash2 className="size-4" />
-                              Delete
-                            </DropdownMenuItem>
-                          </DropdownMenuContent>
-                        </DropdownMenu>
-                        <EditExpenseItemDialog />
-                      </Dialog>
-                    </TableCell>
-                  </TableRow>
-                  <TableRow>
-                    <TableCell className="font-semibold">1</TableCell>
-                    <TableCell>Rice</TableCell>
-                    <TableCell className="hidden sm:table-cell">1.99</TableCell>
-                    <TableCell className="text-center sm:text-left">
-                      <Dialog>
-                        <DropdownMenu>
-                          <DropdownMenuTrigger asChild>
-                            <Button
-                              aria-haspopup="true"
-                              size="icon"
-                              variant="ghost"
-                            >
-                              <MoreHorizontal className="size-4" />
-                              <span className="sr-only">Toggle menu</span>
-                            </Button>
-                          </DropdownMenuTrigger>
-                          <DropdownMenuContent align="end">
-                            <DropdownMenuItem asChild>
-                              <DialogTrigger className="w-full flex gap-1">
-                                <UserRoundPen className="size-4" />
-                                Edit Item
-                              </DialogTrigger>
-                            </DropdownMenuItem>
-                            <DropdownMenuItem className="text-destructive gap-1">
-                              <Trash2 className="size-4" />
-                              Delete
-                            </DropdownMenuItem>
-                          </DropdownMenuContent>
-                        </DropdownMenu>
-                        <EditExpenseItemDialog />
-                      </Dialog>
-                    </TableCell>
-                  </TableRow>
-                  <TableRow>
-                    <TableCell className="font-semibold">1</TableCell>
-                    <TableCell>Rice</TableCell>
-                    <TableCell className="hidden sm:table-cell">1.99</TableCell>
-                    <TableCell className="text-center sm:text-left">
-                      <Dialog>
-                        <DropdownMenu>
-                          <DropdownMenuTrigger asChild>
-                            <Button
-                              aria-haspopup="true"
-                              size="icon"
-                              variant="ghost"
-                            >
-                              <MoreHorizontal className="size-4" />
-                              <span className="sr-only">Toggle menu</span>
-                            </Button>
-                          </DropdownMenuTrigger>
-                          <DropdownMenuContent align="end">
-                            <DropdownMenuItem asChild>
-                              <DialogTrigger className="w-full flex gap-1">
-                                <UserRoundPen className="size-4" />
-                                Edit Item
-                              </DialogTrigger>
-                            </DropdownMenuItem>
-                            <DropdownMenuItem className="text-destructive gap-1">
-                              <Trash2 className="size-4" />
-                              Delete
-                            </DropdownMenuItem>
-                          </DropdownMenuContent>
-                        </DropdownMenu>
-                        <EditExpenseItemDialog />
-                      </Dialog>
-                    </TableCell>
-                  </TableRow>
-                  <TableRow>
-                    <TableCell className="font-semibold">1</TableCell>
-                    <TableCell>Rice</TableCell>
-                    <TableCell className="hidden sm:table-cell">1.99</TableCell>
-                    <TableCell className="text-center sm:text-left">
-                      <Dialog>
-                        <DropdownMenu>
-                          <DropdownMenuTrigger asChild>
-                            <Button
-                              aria-haspopup="true"
-                              size="icon"
-                              variant="ghost"
-                            >
-                              <MoreHorizontal className="size-4" />
-                              <span className="sr-only">Toggle menu</span>
-                            </Button>
-                          </DropdownMenuTrigger>
-                          <DropdownMenuContent align="end">
-                            <DropdownMenuItem asChild>
-                              <DialogTrigger className="w-full flex gap-1">
-                                <UserRoundPen className="size-4" />
-                                Edit Item
-                              </DialogTrigger>
-                            </DropdownMenuItem>
-                            <DropdownMenuItem className="text-destructive gap-1">
-                              <Trash2 className="size-4" />
-                              Delete
-                            </DropdownMenuItem>
-                          </DropdownMenuContent>
-                        </DropdownMenu>
-                        <EditExpenseItemDialog />
-                      </Dialog>
-                    </TableCell>
-                  </TableRow>
-                  <TableRow>
-                    <TableCell className="font-semibold">1</TableCell>
-                    <TableCell>Rice</TableCell>
-                    <TableCell className="hidden sm:table-cell">1.99</TableCell>
-                    <TableCell className="text-center sm:text-left">
-                      <Dialog>
-                        <DropdownMenu>
-                          <DropdownMenuTrigger asChild>
-                            <Button
-                              aria-haspopup="true"
-                              size="icon"
-                              variant="ghost"
-                            >
-                              <MoreHorizontal className="size-4" />
-                              <span className="sr-only">Toggle menu</span>
-                            </Button>
-                          </DropdownMenuTrigger>
-                          <DropdownMenuContent align="end">
-                            <DropdownMenuItem asChild>
-                              <DialogTrigger className="w-full flex gap-1">
-                                <UserRoundPen className="size-4" />
-                                Edit Item
-                              </DialogTrigger>
-                            </DropdownMenuItem>
-                            <DropdownMenuItem className="text-destructive gap-1">
-                              <Trash2 className="size-4" />
-                              Delete
-                            </DropdownMenuItem>
-                          </DropdownMenuContent>
-                        </DropdownMenu>
-                        <EditExpenseItemDialog />
-                      </Dialog>
-                    </TableCell>
-                  </TableRow>
-                  <TableRow>
-                    <TableCell className="font-semibold">1</TableCell>
-                    <TableCell>Rice</TableCell>
-                    <TableCell className="hidden sm:table-cell">1.99</TableCell>
-                    <TableCell className="text-center sm:text-left">
-                      <Dialog>
-                        <DropdownMenu>
-                          <DropdownMenuTrigger asChild>
-                            <Button
-                              aria-haspopup="true"
-                              size="icon"
-                              variant="ghost"
-                            >
-                              <MoreHorizontal className="size-4" />
-                              <span className="sr-only">Toggle menu</span>
-                            </Button>
-                          </DropdownMenuTrigger>
-                          <DropdownMenuContent align="end">
-                            <DropdownMenuItem asChild>
-                              <DialogTrigger className="w-full flex gap-1">
-                                <UserRoundPen className="size-4" />
-                                Edit Item
-                              </DialogTrigger>
-                            </DropdownMenuItem>
-                            <DropdownMenuItem className="text-destructive gap-1">
-                              <Trash2 className="size-4" />
-                              Delete
-                            </DropdownMenuItem>
-                          </DropdownMenuContent>
-                        </DropdownMenu>
-                        <EditExpenseItemDialog />
-                      </Dialog>
-                    </TableCell>
-                  </TableRow>
-                </TableBody>
-                <TableFooter className="bg-card">
-                  <TableRow>
-                    <TableCell>Total</TableCell>
-                    <TableCell> </TableCell>
-                    <TableCell>$123234.22</TableCell>
-                    <TableCell> </TableCell>
-                  </TableRow>
-                </TableFooter>
-              </Table>
-            </CardContent>
-            <CardFooter className="justify-center border-t p-4">
+          <div className="flex flex-col gap-2">
+            <div className="flex justify-between items-center gap-2">
+              <div className="flex flex-col gap-1">
+                <h3 className="font-bold text-2xl gap-2">Items</h3>
+                <p className="text-sm sm:text-md text-muted-foreground">
+                  Specify the items ordered and allocate each item to a person
+                  or group
+                </p>
+              </div>
               <Dialog>
                 <DialogTrigger asChild>
                   <Button size="sm" variant="default" className="gap-1">
@@ -394,8 +171,49 @@ export default function CreateExpense() {
                 </DialogTrigger>
                 <AddExpenseItemDialog />
               </Dialog>
-            </CardFooter>
-          </Card>
+            </div>
+
+            <Table containerClassname="max-h-96">
+              <TableHeader className="bg-card w-full">
+                <TableRow>
+                  <TableHead className="w-[25px]">Qty</TableHead>
+                  <TableHead>Name</TableHead>
+                  <TableHead className="hidden sm:table-cell">
+                    Price (per item)
+                  </TableHead>
+                  <TableHead className="w-[25px]">
+                    <span className="sr-only">Actions</span>
+                  </TableHead>
+                  <TableHead className="w-[25px]">
+                    <span className="sr-only">Details</span>
+                  </TableHead>
+                </TableRow>
+              </TableHeader>
+              <TableBody className="overflow-auto">
+                <ExpenseItemRow />
+                <ExpenseItemRow />
+                <ExpenseItemRow />
+                <ExpenseItemRow />
+                <ExpenseItemRow />
+                <ExpenseItemRow />
+                <ExpenseItemRow />
+                <ExpenseItemRow />
+                <ExpenseItemRow />
+                <ExpenseItemRow />
+                <ExpenseItemRow />
+                <ExpenseItemRow />
+              </TableBody>
+              <TableFooter className="bg-card w-full">
+                <TableRow>
+                  <TableCell>Total</TableCell>
+                  <TableCell> </TableCell>
+                  <TableCell className="hidden sm:table-cell"></TableCell>
+                  <TableCell> </TableCell>
+                  <TableCell> $123234.22</TableCell>
+                </TableRow>
+              </TableFooter>
+            </Table>
+          </div>
         </div>
         <PeopleItemBreakdown />
       </div>

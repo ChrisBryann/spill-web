@@ -29,7 +29,7 @@ import { PlusCircle } from "lucide-react";
   Used when user wants to add an expense item
   
   */
-export default function AddExpenseItemDialog() {
+export function AddExpenseItemDialog() {
   return (
     <DialogContent className="w-[375px] sm:w-full">
       <DialogHeader>

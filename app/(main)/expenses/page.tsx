@@ -74,7 +74,7 @@ export default function Expenses() {
           </div>
         </div>
         <TabsContent value="all">
-          <Card x-chunk="dashboard-06-chunk-0">
+          <Card x-chunk="expenses-list">
             <CardHeader>
               <CardTitle>Expenses</CardTitle>
               <CardDescription>

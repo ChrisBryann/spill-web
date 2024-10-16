@@ -13,7 +13,7 @@ export function FriendCard() {
     <Card className="bg-muted hover:cursor-pointer">
       <CardHeader>
         <div className="flex items-center gap-4">
-          <Avatar className="hidden size-9 sm:flex">
+          <Avatar className="size-10">
             <AvatarImage
               src="https://avatar.iran.liara.run/public"
               alt="Christopher Bryan"

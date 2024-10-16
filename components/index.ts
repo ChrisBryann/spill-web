@@ -131,8 +131,16 @@ export {
   ChartStyle,
 } from "./ui/charts";
 export type { ChartConfig } from "./ui/charts";
+export {
+  Collapsible,
+  CollapsibleTrigger,
+  CollapsibleContent,
+} from "./ui/collapsible";
 
 // Self-made UI Components
 export { Header } from "./Header";
 export { PeopleItemBreakdown } from "./PeopleItemBreakdown";
 export { FriendCard } from "./FriendCard";
+export { EditExpenseItemDialog } from "./EditExpenseItemDialog";
+export { AddExpenseItemDialog } from "./AddExpenseItemDialog";
+export { ExpenseItemRow } from "./ExpenseItemRow";

@@ -29,7 +29,7 @@ EDIT EXPENSE ITEM DIALOG Component
 Used when user wants to edit one of the expense item
 
 */
-export default function EditExpenseItemDialog() {
+export function EditExpenseItemDialog() {
   return (
     <DialogContent className="w-[375px] sm:w-full">
       <DialogHeader>

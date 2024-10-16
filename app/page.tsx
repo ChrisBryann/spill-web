@@ -72,7 +72,7 @@ const orders = [
 export default function Home() {
   return (
     <div>
-      <div class="fixed left-0 top-0 -z-10 h-full w-full">
+      <div className="fixed left-0 top-0 -z-10 h-full w-full">
       <DotPattern
           className={ny(
             "[mask-image:radial-gradient(ellipse_at_center,white,transparent)]",
