@@ -215,7 +215,56 @@ export default function EditExpense() {
             </Table>
           </div>
         </div>
-        <PeopleItemBreakdown />
+        {/* <PeopleItemBreakdown /> */}
+        <div className="flex flex-col gap-2">
+          <div className="flex flex-col gap-1">
+            <h3 className="font-bold text-2xl gap-2">Payment Info</h3>
+            <p className="text-sm sm:text-md text-muted-foreground">
+              Add a payment info for your friends to repay you
+            </p>
+          </div>
+          <Select>
+            <SelectTrigger>
+              <SelectValue placeholder="Select a payment method" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem className="flex flex-row" value="add">
+                Add a payment method
+              </SelectItem>
+              <SelectItem value="zelle">Zelle</SelectItem>
+              <SelectItem value="venmo">Venmo</SelectItem>
+            </SelectContent>
+          </Select>
+          <div className="grid gap-2">
+            <div>
+              <Label htmlFor="account_name">Account Name *</Label>
+              <Input
+                id="account_name"
+                type="text"
+                className="w-full"
+                required
+              />
+            </div>
+            <div>
+              <Label htmlFor="account_type">Account Type</Label>
+              <Input
+                id="account_type"
+                type="text"
+                className="w-full"
+                required
+              />
+            </div>
+            <div>
+              <Label htmlFor="account_description">Account Description</Label>
+              <Input
+                id="account_description"
+                type="text"
+                className="w-full"
+                required
+              />
+            </div>
+          </div>
+        </div>
       </div>
       <div className="flex items-center justify-center gap-2 md:hidden">
         <Button variant="outline" size="sm">
